@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <map>
 #include <set>
@@ -95,13 +96,13 @@ public:
 private:
     int fail_count = 0;
 };
-int GetDis(const int& a, const int& b, const int& c) {
+double GetDis(const double& a, const double& b, const double& c) {
     return (pow(b, 2) - (4 * a * c));
 }
-vector<int> Solution(const int& a, const int& b, const int& c) {
-    vector<int>res;
+vector<double> Solution(const double& a, const double& b, const double& c) {
+    vector<double>res;
     res.resize(0);
-    int D = GetDis(a, b, c);
+    double D = GetDis(a, b, c);
     if (a == 0 && b != 0) {
         res.push_back((-1.0 * c) / (b));
         return res;
@@ -119,7 +120,7 @@ vector<int> Solution(const int& a, const int& b, const int& c) {
     return res;
 }
 int GetDistinctRealRootCount(double a, double b, double c) {
-    vector<int>x = Solution(a, b, c);
+    vector<double>x = Solution(a, b, c);
     return x.size();
 }
 
@@ -151,13 +152,13 @@ int main() {
     EXECUTE();
 
     while (1) {
-        int a, b, c;
+        double a, b, c;
         cin >> a >> b >> c;
         cout << " :" << GetDistinctRealRootCount(a, b, c) << endl;
     }
     return 0;
 }
-/*
+*/
 //add
 #include <iostream>
 #include <map>
@@ -256,28 +257,34 @@ public:
 private:
     int fail_count = 0;
 };
-double GetDis(const int& a, const int& b, const int& c) {
+double GetDis(const double& a, const double& b, const double& c) {
     return (pow(b, 2.0) - (4.0 * a * c));
 }
-vector<double> Solution(const int& a, const int& b, const int& c) {
-    vector<double>res;
-    res.resize(0);
-    double D = GetDis(a, b, c);
-    if (a == 0 && b != 0) {
-        res.push_back((-1.0 * c) / (b));
-        return res;
+vector<double> Solution(const double& a, const double& b, const double& c) {
+    if (a == 0) {
+        throw runtime_error("a==0");
     }
-    if (a == 0 && b == 0) {
-        return res;
-    }
+    else if (a == 0 && b == 0) {
+        throw runtime_error("a==0 && b==0");
 
-    if (D > 0.0) {
-        res.push_back((-1.0 * b - sqrt(pow(b, 2) - 4.0 * a * c)) / (2.0 * a));
-        res.push_back((-1.0 * b + sqrt(pow(b, 2) - 4.0 * a * c)) / (2.0 * a));
     }
-    else if (D == 0.0) res.push_back((-1.0 * b) / (2.0 * a));
-    else res.resize(0);
-    return res;
+    else {
+        vector<double>res;
+        res.resize(0);
+        double D = GetDis(a, b, c);
+        if (D < 0) {
+            res.resize(0);
+        }
+        else
+            if (D == 0) {
+                res.push_back((-1.0 * b) / (2.0 * a));
+            } else
+                if (D > 0) {
+                    res.push_back(((-1.0 * b) - sqrt(D)) / (2.0 * a));
+                    res.push_back(((-1.0 * b) + sqrt(D)) / (2.0 * a));
+                }
+        return res;
+    }
 }
 int GetDistinctRealRootCount(double a, double b, double c) {
     vector<double>x = Solution(a, b, c);
@@ -290,31 +297,26 @@ void TestDistinctRealRootCount() {
     AssertEqual(GetDistinctRealRootCount(0, 0, 1), 0, " 001 ");
     AssertEqual(GetDistinctRealRootCount(0, 1, 0), 1, " 010 ");
     AssertEqual(GetDistinctRealRootCount(0, 1, 1), 1, " 011 ");
-    AssertEqual(GetDistinctRealRootCount(1, 0, 0), , " 100 ");
-    AssertEqual(GetDistinctRealRootCount(1, 0, 1), , " 101 ");
-    AssertEqual(GetDistinctRealRootCount(1, 1, 0), , " 110 ");
-    AssertEqual(GetDistinctRealRootCount(1, 1, 1), , " 111 ");
+    AssertEqual(GetDistinctRealRootCount(1, 0, 0), 1, " 100 ");
+    AssertEqual(GetDistinctRealRootCount(1, 0, 1), 0, " 101 ");
+    AssertEqual(GetDistinctRealRootCount(1, 1, 0), 2, " 110 ");
+    AssertEqual(GetDistinctRealRootCount(1, 1, 1), 0, " 111 ");
+    AssertEqual(GetDistinctRealRootCount(9, 0, -36), 2, " 90-36 ");
 
 }
 
-void TestAreQuadratic() {
-    Assert()
-}
 void EXECUTE() {
     TestRunner runner;
-    runner.RunTest(TestDis, "TestDis");
     runner.RunTest(TestDistinctRealRootCount, "TestDistinctRealRootCount");
 }
 
 int main() {
-    EXECUTE();
 
-    while (1) {
+    EXECUTE();
+    /*while (1) {
         int a, b, c;
         cin >> a >> b >> c;
         cout << " :" << GetDistinctRealRootCount(a, b, c) << endl;
-    }
+    }*/
     return 0;
 }
-
-*/
