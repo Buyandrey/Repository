@@ -1,50 +1,50 @@
 #include "phone_number.h"
+#include <exception>
+#include <stdexcept>
 
 PhoneNumber::PhoneNumber(const string& in) {
-	int n = in.size();
-
+	//+...-...-...................
+	bool m = false;//был ли минус
+	bool l = false;//заблочен ли счетчик
+	int k = 0;	   //0-cou//1-cit//2-local
 	int i = 0;
 	for (const char& s : in) {
-		if (i == 0) {
-			if (s != '+')
-				throw invalid_argument("IN[0]!='+'");
-			else {
-				i++;
-				continue;
-			}
+		//смотрим на первый символ
+		if (i == 0 && s == '+') {
+			i++;
+			continue;
 		}
-		else if (i == 4) {
-			if (s != '-')
-				throw invalid_argument("IN[4]!='-'");
-			else {
-				i++;
-				continue;
-			}
+		else if (i == 0 && s != '+') {
+			throw invalid_argument("No '+'");
 		}
-		else if (i == 8) {
-			if (s != '-')
-				throw invalid_argument("IN[8]!='-'");
-			else {
-				i++;
-				continue;
-			}
+		
+		//включается режим записи в код города
+		if (m == false && s == '-'&& l==false) {
+			k++;
+			i++;
+			m = true;
+			continue;
 		}
-		else if (i < 4) {
+		//включается режим записи в локаль
+		if (m == true && s == '-' && l==false) {
+			k++;
+			i++;
+			l = true;
+			continue;
+		}
+		//запись в нужное место
+		if (k == 0) {
 			country_code_ += s;
-			i++;
-			continue;
-		}
-		else if (i > 4 && i < 8) {
-			city_code_ += s;
-			i++;
-			continue;
-		}
-		else if (i > 8) {
-			local_number_ += s;
-			i++;
-			continue;
-		}
+		}else
+			if (k == 1) {
+				city_code_ += s;
+			}else 
+				if (k == 2) {
+					local_number_ += s;
+			}
+		i++;
 	}
+	//проверяем чтобы ничего не пустовало
 	if(local_number_.size()==0 || city_code_.size() == 0 || country_code_.size() == 0)
 		throw invalid_argument("Smth is empty");
 }

@@ -1,8 +1,6 @@
 #pragma once
 
 #include <string>
-#include <exception>
-#include <stdexcept>
 
 using namespace std;
 

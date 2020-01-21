@@ -23,7 +23,7 @@ int main() {
    * +7-1233 - некорректный номер - есть только код страны и города
     */
     try {
-        PhoneNumber pn("++123-567-901234");
+        PhoneNumber pn("+a-s-333-222-dffdx");
         cout << pn.GetCountryCode() << '/' << pn.GetCityCode() << '/' << pn.GetLocalNumber() << endl;
         cout << pn.GetInternationalNumber();
     }
