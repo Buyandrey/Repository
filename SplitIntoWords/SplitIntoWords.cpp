@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 vector<string> SplitIntoWords(const string& str) {
     vector<string> result;
     auto str_begin = begin(str);
