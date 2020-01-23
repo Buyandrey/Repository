@@ -1,4 +1,3 @@
-//
 #include <algorithm>
 #include <string>
 #include <vector>
@@ -6,7 +5,6 @@
 using namespace std;
 
 vector<string> SplitIntoWords(const string& str) {
-    // √отовим вектор, в который будем сохран€ть слова
     vector<string> result;
     auto str_begin = begin(str);
     const auto str_end = end(str);
@@ -20,8 +18,6 @@ vector<string> SplitIntoWords(const string& str) {
         else {
             str_begin = it + 1;
         }
-
     }
-
     return result;
 }
