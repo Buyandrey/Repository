@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{510F88FC-9653-4C1D-A13C-C8C79A0DE5AD}</ProjectGuid>
+    <ProjectGuid>{07A8750B-518C-4187-8935-CD487071105A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SplitIntoWords</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
