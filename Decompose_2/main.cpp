@@ -1,36 +1,14 @@
-#include "de.h"
-
 #include <string>
 #include <iostream>
-#include <cassert>
 #include <vector>
 #include <map>
+#include <cassert>
 
 using namespace std;
 
-enum class QueryType {
-    NewBus,
-    BusesForStop,
-    StopsForBus,
-    AllBuses
-};
-struct Query {
-    QueryType type;
-    string bus;
-    string stop;
-    vector<string> stops;
-};
-struct BusesForStopResponse {
-    vector<string> buses;
-};
-struct StopsForBusResponse {
-    string bus;
-    vector<pair<string, vector<string>>> stops_for_buses;
-};
-struct AllBusesResponse {
-    map<string, vector<string>> buses_to_stops;
-};
-
+#include "query.h"
+#include "responses.h"
+#include "bus_manager.h"
 int main() {
     int query_count;
     Query q;

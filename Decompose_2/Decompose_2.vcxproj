@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{A5A21D29-7125-4AA9-B4FB-485D586FFB19}</ProjectGuid>
+    <ProjectGuid>{20205D08-F5E3-4580-BBAF-B700B713D32A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Decompose2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -147,11 +147,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="de.cpp" />
-    <ClCompile Include="Decompose_2.cpp" />
+    <ClCompile Include="bus_manager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="query.cpp" />
+    <ClCompile Include="responses.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="de.h" />
+    <ClInclude Include="bus_manager.h" />
+    <ClInclude Include="query.h" />
+    <ClInclude Include="responses.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
