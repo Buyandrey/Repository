@@ -150,6 +150,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintVectorPart.cpp" />
     <ClCompile Include="res.cpp" />
+    <ClCompile Include="SplitIntoWords.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrintVectorPart.h" />
