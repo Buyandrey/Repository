@@ -1,33 +1,21 @@
-п»ї#include <iostream>
+#include <iostream>
 #include <vector>
 #include <set>
-/*
-РќР°РїРёС€РёС‚Рµ С€Р°Р±Р»РѕРЅРЅСѓСЋ С„СѓРЅРєС†РёСЋ FindGreaterElements, РїСЂРёРЅРёРјР°СЋС‰СѓСЋ РјРЅРѕР¶РµСЃС‚РІРѕ elements
-РѕР±СЉРµРєС‚РѕРІ С‚РёРїР° T Рё РµС‰С‘ РѕРґРёРЅ РѕР±СЉРµРєС‚ border С‚РёРїР° T Рё РІРѕР·РІСЂР°С‰Р°СЋС‰СѓСЋ РІРµРєС‚РѕСЂ РёР· РІСЃРµС… 
-СЌР»РµРјРµРЅС‚РѕРІ РјРЅРѕР¶РµСЃС‚РІР°, Р±РѕМЃР»СЊС€РёС… border, РІ РІРѕР·СЂР°СЃС‚Р°СЋС‰РµРј РїРѕСЂСЏРґРєРµ.
 
->
-7 8
-0
-
-*/
 using namespace std;
+
 template <typename T>
 vector<T> FindGreaterElements(const set<T>& elements, const T& border) {
-   
     vector<T> res;
-        for (auto it = begin(elements); it != end(elements); it++) {
-        auto result_it = 
-            find_if(begin(elements), end(elements),
-            [](/*РѕС‡РµСЂРµРґРЅРѕР№ СЌР»РµРјРµРЅС‚*/const T& element) {
-                return element > border;
-            });
-        if (result_it != end(elements)) {
-            res.push_back(*result_it);
-        }
-    }
-
     
+    auto v=find_if(begin(elements),end(elements),
+        [&](T element){
+            return element > border;
+    });
+    if (v != end(elements))
+        for (auto it = v; it != end(elements); ++it)
+            res.push_back(*it);
+    return res;
 }
 
 int main() {
@@ -36,7 +24,28 @@ int main() {
     }
     cout << endl;
 
-    string to_find = "Python";
-    cout << FindGreaterElements(set<string>{"C", "C++"}, to_find).size() << endl;
+    string to_find = "python";
+    cout << FindGreaterElements(set<string>{"c", "c++"}, to_find).size() << endl;
     return 0;
+
 }
+/* coursera
+#include <iostream>
+#include <set>
+#include <vector>
+
+using namespace std;
+
+template <typename T>
+vector<T> FindGreaterElements(const set<T>& elements, const T& border) {
+  // Начнём итерироваться по множеству
+  auto it = begin(elements);
+  // Цель — найти первый элемент, больший border
+  // Если итератор не достиг конца и указывает не туда, двигаем
+  while (it != end(elements) && *it <= border) {
+    ++it;
+  }
+  // Возвращаем вектор, созданный из элементов множества, начиная с it
+  return {it, end(elements)};
+}
+*/
