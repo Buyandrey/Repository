@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Merge_sort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="3.cpp">
+    <ClCompile Include="FindStartsWith.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

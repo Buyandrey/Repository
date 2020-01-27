@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{57E30715-0A4C-4AEE-BB2C-3DD5BB45DC50}</ProjectGuid>
+    <ProjectGuid>{70179085-0002-481C-BF3D-C65BC989F0B9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Mergesort</RootNamespace>
+    <RootNamespace>StekQueue</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,8 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3.cpp" />
-    <ClCompile Include="Merge_sort.cpp" />
+    <ClCompile Include="Stek_Queue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
