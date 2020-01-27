@@ -9,26 +9,16 @@ pair<RandomIt, RandomIt> FindStartsWith(
     RandomIt range_begin, RandomIt range_end,
     char prefix) 
 {
+    string prefix_str;
+    prefix_str.push_back(prefix);
+    auto s = lower_bound(range_begin, range_end, prefix_str);
+    auto e = upper_bound(s, range_end, prefix_str);
     
-    auto start = find_if(range_begin, range_end, [&](string s) {
-        return(s[0] == prefix);
-    });
-    if (start != range_end) {
-        auto end = find_if(start, range_end, [&](string s) {
-            return(s[0] != prefix);
-        });
-        pair<RandomIt, RandomIt> res = { start, end };
-        return res;
+    if (s != range_end) {
+        return(make_pair(s, e));
     }
-    
     else {
-        auto end = find_if(range_begin, range_end, [&](string s) {
-            //да, если предыдущий меньше или последующий больше
-            return(s[0]>prefix);
-        });
-        start = end;
-        pair<RandomIt, RandomIt> res = { start, end };
-        return res;
+        return(make_pair(range_end,range_end));
     }
 }
 //abcdefghijkl m no p qrstu v wxyz
